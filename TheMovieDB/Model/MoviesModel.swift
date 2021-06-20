@@ -8,12 +8,14 @@
 import Foundation
 
 struct MoviesModel {
+    var id: Int?
     var title: String?
     var body: String?
     var date: String?
     var imgUrlString: String?
     
-    init(data: MoviesDetailResponseModel) {
+    init(data: MovieResponseModel) {
+        self.id = data.id
         self.title = data.title ?? "n/a"
         self.body = data.overview ?? "n/a"
         self.date = data.releaseDate ?? "n/a"

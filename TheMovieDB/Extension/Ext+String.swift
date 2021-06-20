@@ -27,4 +27,17 @@ extension String {
     func toData() -> Data? {
         return self.data(using: .utf8)
     }
+
+    func toReleaseDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = dateFormatter.date(from: self) {
+            dateFormatter.dateFormat = "MMM dd, yyyy"
+            let date = dateFormatter.string(from: date)
+            return "Release on \(date)"
+        } else {
+            return "Release on n/a"
+        }
+    }
 }

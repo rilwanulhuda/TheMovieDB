@@ -8,7 +8,7 @@
 import Alamofire
 import Foundation
 
-enum FetchResutlt<Success, GeneralError> {
+enum FetchResult<Success, GeneralError> {
     case success(Success)
     case failure(GeneralError)
 }
@@ -39,7 +39,7 @@ class NetworkService {
                           headers: endpoint.headers)
     }
 
-    func request<T: Decodable>(endpoint: IEndpoint, completion: @escaping (FetchResutlt<T, String>) -> Void) {
+    func request<T: Decodable>(endpoint: IEndpoint, completion: @escaping (FetchResult<T, String>) -> Void) {
         guard NetworkStatus.isInternetAvailable else {
             let errorMsg = "No Internet Connection"
             print(errorMsg)

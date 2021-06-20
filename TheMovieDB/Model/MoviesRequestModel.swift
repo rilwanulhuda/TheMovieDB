@@ -10,10 +10,6 @@ import Foundation
 struct MoviesRequestModel {
     var page: Int?
 
-    init(page: Int?) {
-        self.page = page
-    }
-
     func parameters() -> [String: Any]? {
         return [
             "api_key": APIConstant.apiKey,

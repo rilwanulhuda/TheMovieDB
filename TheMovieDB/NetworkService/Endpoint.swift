@@ -12,6 +12,7 @@ enum Endpoint {
     case popular(model: MoviesRequestModel)
     case topRated(model: MoviesRequestModel)
     case upcoming(model: MoviesRequestModel)
+    case movieDetail(model: MoviesDetailRequestModel)
 }
 
 extension Endpoint: IEndpoint {
@@ -29,6 +30,8 @@ extension Endpoint: IEndpoint {
             return "/movie/top_rated"
         case .upcoming:
             return "/movie/upcoming"
+        case .movieDetail(let model):
+            return "/movie/\(model.movieId)"
         }
     }
 
@@ -37,7 +40,8 @@ extension Endpoint: IEndpoint {
         case .nowPlaying,
              .popular,
              .topRated,
-             .upcoming:
+             .upcoming,
+             .movieDetail:
             return .get
         }
     }
@@ -51,6 +55,8 @@ extension Endpoint: IEndpoint {
         case .topRated(let model):
             return model.parameters()
         case .upcoming(let model):
+            return model.parameters()
+        case .movieDetail(let model):
             return model.parameters()
         }
     }
@@ -66,7 +72,8 @@ extension Endpoint: IEndpoint {
         case .nowPlaying,
              .popular,
              .topRated,
-             .upcoming:
+             .upcoming,
+             .movieDetail:
             return URLEncoding.queryString
         }
     }

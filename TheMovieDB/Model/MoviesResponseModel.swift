@@ -11,7 +11,7 @@ struct MoviesResponseModel: Codable {
     var page: Int?
     var totalPages: Int?
     var totalResults: Int?
-    var results: [MoviesDetailResponseModel]?
+    var results: [MovieResponseModel]?
 
     enum CodingKeys: String, CodingKey {
         case page = "page"
@@ -21,7 +21,7 @@ struct MoviesResponseModel: Codable {
     }
 }
 
-struct MoviesDetailResponseModel: Codable {
+struct MovieResponseModel: Codable {
     var posterPath: String?
     var adult: Bool?
     var overview: String?
